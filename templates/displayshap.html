@@ -1,3 +1,50 @@
-{% for i in shap_plots: %}
-<iframe srcdoc="{{shap_plots[i]}}" style={"width": "2000px"; "height": "200px"; border: none;} ></iframe>
-{% endfor %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>SHAP HTML in Flask</title>
+  </head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+
+  <style media="screen">
+    html {
+      --bck-color: #FFF;
+      --ft-color: #000;
+      --link-color: blue;
+      --drop-color: #f1f8e9;
+    }
+    html.dark {
+      --bck-color: #000;
+      --ft-color: #FFF;
+      --link-color: #DDD;
+      --drop-color: #768763;
+    }
+    body {
+      font-family: "Lucida Sans Typewriter","Lucida Console",Monaco,"Bitstream Vera Sans Mono",monospace;
+      background: var(--bck-color);
+      color: var(--ft-color);
+      text-align: center;
+    }
+    iframe{
+      width: 2000px;
+      height: 200px;
+      border: none;
+    }
+  </style>
+  <body>
+    <span id="toggle-switch" title="Toggle Dark Theme">
+      <i class="fas fa-moon" id="toggle-switch"></i>
+    </span>
+    <h1>Tutorial using SHAP in Python flask</h1>
+    <h2>
+      Data from <a href="https://shap.readthedocs.io/en/latest/example_notebooks/tabular_examples/linear_models/Sentiment%20Analysis%20with%20Logistic%20Regression.html#Fit-a-linear-logistic-regression-model">here</a>
+      </br>
+      <a href="https://github.com/yi-ye-zhi-qiu/shaphtml">Github repo for this project (source code)</a>
+  </h2>
+
+  {% for i in shap_plots: %}
+    <iframe srcdoc="{{shap_plots[i]}}"} ></iframe>
+  {% endfor %}
+  </body>
+  <script src="{{ url_for('static',filename='darkmode.js') }} "></script>
+</html>
